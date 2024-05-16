@@ -1,0 +1,8 @@
+﻿Budapest;25,6;66;22,5
+Pécs;19,2;49;44
+Csepel;27,6;87;35,4
+Bér;32;45;30
+Vanyarc;17;77;29,9
+Bercel;-2,5;99;0
+Mohora;13,4;56;17
+Balassagyarmat;29,6;76;19,6
