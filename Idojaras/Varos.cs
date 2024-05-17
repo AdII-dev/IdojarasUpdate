@@ -9,11 +9,11 @@ namespace Idojaras
     internal class Varos
     {
         public string _nev;
-        public int _homerseklet;
-        public int _paratartalom;
-        public int _szelsebesseg;
+        public double _homerseklet;
+        public double _paratartalom;
+        public double _szelsebesseg;
 
-        public Varos(string nev, int homerselket, int paratartalom, int szelesebesseg)
+        public Varos(string nev, double homerselket, double paratartalom, double szelesebesseg)
         {
            
             _nev = nev;
@@ -21,5 +21,16 @@ namespace Idojaras
             _paratartalom = paratartalom;
             _szelsebesseg = szelesebesseg;
         }
+        public Varos(string sor)
+        {
+            var adatok = sor.Split(';').ToList();
+            _nev = adatok[0];
+            _homerseklet = double.Parse(adatok[1]);
+            _paratartalom = double.Parse(adatok[2]);
+            _szelsebesseg = double.Parse(adatok[3]);
+        }
+
     }
+
+
 }
