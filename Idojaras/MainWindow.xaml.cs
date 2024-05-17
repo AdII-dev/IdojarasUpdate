@@ -1,9 +1,8 @@
+using System.Collections.Generic;
 using System.IO;
-using System.Security.Policy;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -39,9 +38,12 @@ namespace Idojaras
         {
             InitializeComponent();
             varosok = new List<Varos>();
-            var sr = new StreamReader("../../../src/cities.txt");
+            using StreamReader sr = new(
+                path: (@"../../../src/idojarasok.txt",
+                encoding: System.Text.Encoding.UTF8);
             _ = sr.ReadLine(); // skip 1st line
-            while (!sr.EndOfStream) varosok.Add(new Varos(sr.ReadLine(), ";"));
+            while (!sr.EndOfStream) varosok.Add(new Varos(sr.ReadLine()));
+            Feltolt(varosok);
 
         }
             
@@ -101,7 +103,7 @@ namespace Idojaras
         private void AdatokBevitele_Click(object sender, RoutedEventArgs e)
         {
             //Eltárolja a beírt adatokat
-            varosok.Add(new(VarosAdd.Text, Convert.ToInt32(homersekletAdd.Text), Convert.ToInt32(paraAdd.Text), Convert.ToInt32(szelsebessegAdd.Text)));
+            varosok.Add(new(VarosAdd.Text, Convert.ToDouble(homersekletAdd.Text), Convert.ToDouble(paraAdd.Text), Convert.ToDouble(szelsebessegAdd.Text)));
             Feltolt(varosok);
 
             //Visszaállítja az alapértelmezett szöveget
